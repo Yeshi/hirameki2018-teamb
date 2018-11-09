@@ -56,6 +56,7 @@ a:hover {
 }
 
 #header .header-box-info {
+  display: none;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -77,6 +78,7 @@ a:hover {
 }
 
 #contents {
+  display: block;
   max-width: 780px;
   margin: 0 auto;
 }
@@ -84,6 +86,12 @@ a:hover {
 .module-about .about-image {
   -ms-flex-negative: 0;
       flex-shrink: 0;
+}
+
+.module-about .about-image img {
+  width: 200px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 }
 
 .module-about .about-catch {
@@ -137,11 +145,27 @@ a:hover {
   padding-bottom: 50px;
 }
 
-.member-info {
-  padding-bottom: 50px;
+.member-list .member-hd {
+  padding-bottom: 30px;
+  text-align: center;
 }
 
-.member-info h2 {
+.member-list .member-hd:before {
+  content: "";
+  display: inline-block;
+  background: url(images/star.svg) no-repeat 50%;
+  background-size: cover;
+  width: 48px;
+  height: 48px;
+  margin-right: -22px;
+  vertical-align: bottom;
+}
+
+.member-info {
+  padding-bottom: 60px;
+}
+
+.member-info .info-title {
   display: inline-block;
   margin-bottom: 20px;
   padding: 0 20px;
@@ -155,55 +179,55 @@ a:hover {
   font-style: normal;
 }
 
-.member-info:nth-child(1) h2 {
+.member-info:nth-child(1) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #FFEDC4));
   background: -o-linear-gradient(transparent 50%, #FFEDC4 50%);
   background: linear-gradient(transparent 50%, #FFEDC4 50%);
 }
 
-.member-info:nth-child(2) h2 {
+.member-info:nth-child(2) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #FFF9C3));
   background: -o-linear-gradient(transparent 50%, #FFF9C3 50%);
   background: linear-gradient(transparent 50%, #FFF9C3 50%);
 }
 
-.member-info:nth-child(3) h2 {
+.member-info:nth-child(3) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #DAFAC1));
   background: -o-linear-gradient(transparent 50%, #DAFAC1 50%);
   background: linear-gradient(transparent 50%, #DAFAC1 50%);
 }
 
-.member-info:nth-child(4) h2 {
+.member-info:nth-child(4) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #C5FBDB));
   background: -o-linear-gradient(transparent 50%, #C5FBDB 50%);
   background: linear-gradient(transparent 50%, #C5FBDB 50%);
 }
 
-.member-info:nth-child(5) h2 {
+.member-info:nth-child(5) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #CFF7FF));
   background: -o-linear-gradient(transparent 50%, #CFF7FF 50%);
   background: linear-gradient(transparent 50%, #CFF7FF 50%);
 }
 
-.member-info:nth-child(6) h2 {
+.member-info:nth-child(6) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #C6D6FD));
   background: -o-linear-gradient(transparent 50%, #C6D6FD 50%);
   background: linear-gradient(transparent 50%, #C6D6FD 50%);
 }
 
-.member-info:nth-child(7) h2 {
+.member-info:nth-child(7) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #D6C5FD));
   background: -o-linear-gradient(transparent 50%, #D6C5FD 50%);
   background: linear-gradient(transparent 50%, #D6C5FD 50%);
 }
 
-.member-info:nth-child(8) h2 {
+.member-info:nth-child(8) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #F8C5FD));
   background: -o-linear-gradient(transparent 50%, #F8C5FD 50%);
   background: linear-gradient(transparent 50%, #F8C5FD 50%);
 }
 
-.member-info:nth-child(9) h2 {
+.member-info:nth-child(9) .info-title {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #FCCBC5));
   background: -o-linear-gradient(transparent 50%, #FCCBC5 50%);
   background: linear-gradient(transparent 50%, #FCCBC5 50%);
@@ -251,6 +275,10 @@ a:hover {
   font-size: 20px;
   margin-right: 10px;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .member-info .info-wrap .info-image ul li.cur {
@@ -286,7 +314,18 @@ a:hover {
 }
 
 .module-sns {
-  padding-bottom: 30px;
+  padding-bottom: 50px;
+}
+
+.module-sns h2:before {
+  content: "";
+  display: inline-block;
+  background: url(images/star.svg) no-repeat 50%;
+  background-size: cover;
+  width: 48px;
+  height: 48px;
+  margin-right: -22px;
+  vertical-align: bottom;
 }
 
 .module-sns p {
@@ -299,6 +338,17 @@ a:hover {
 
 .module-links {
   padding-bottom: 30px;
+}
+
+.module-links h2:before {
+  content: "";
+  display: inline-block;
+  background: url(images/star.svg) no-repeat 50%;
+  background-size: cover;
+  width: 48px;
+  height: 48px;
+  margin-right: -22px;
+  vertical-align: bottom;
 }
 
 .module-links p {
@@ -366,7 +416,17 @@ a:hover {
   #contents {
     margin: 0 15px;
   }
-  .member-list h2 {
+  .about-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .about-info .about-text {
+    padding: 20px 0;
+    max-width: 400px;
+  }
+  .member-info h2 {
     padding: 0 5px;
     font-size: 22px;
   }

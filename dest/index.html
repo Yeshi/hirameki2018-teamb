@@ -7,10 +7,20 @@
     <title>COMITIA126新刊 う01b はたらく美少女アンソロジー ひらめきマンガ教室 チームB</title>
     <link rel="stylesheet" href="style.css">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128962723-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128962723-1');
+</script>
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="はたらく美少女アンソロジー COMITIA126 う01b">
 <meta property="og:description" content="美少女も、頑張ったり、充電したり、しているのです。ゲンロンひらめき☆マンガ教室 チームB合同誌">
-<meta property="og:image" content="./images/og-image.jpg"><!--TODO-->
+<meta property="og:image" content="https://hirameki-teamb.firebaseapp.com/images/bg-top.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@hiramanteamb">
@@ -124,7 +134,7 @@ var memberData = [
         </div>
         <div class="about-info">
           <div class="about-image">
-            <img src="http://dummyimage.com/130x192" alt="表紙">
+            <img src="images/frontCover.jpg" alt="表紙">
           </div>
           <div class="about-text">
             <dl>
@@ -145,11 +155,11 @@ var memberData = [
       </div>
       </section>
 
-      <h2>試し読み</h2>
       <article id="member-list" class="member-list">
+        <h2 class="member-hd">試し読み</h2>
         <section v-for="mem in members" class="member-info">
           <div class="info-header" :id="'info-'+mem.hirameki_id">
-            <h2>{{ mem.title }}</h2>
+            <h2 class="info-title">{{ mem.title }}</h2>
           </div>
           <div class="info-wrap">
             <div class="info-image">
@@ -174,7 +184,8 @@ var memberData = [
       <section class="module-sns">
         <h2>SNSで最新情報配信中</h2>
         <p>Pixiv： <a href="https://www.pixiv.net/member.php?id=34223413">はたらく美少女アンソロジー</a></p>
-        <p>Twitter：<a target="_blank" href="https://twitter.com/hiramanteamb">@hiramanteamb</a> ハッシュタグ：<a target="_blank" href="https://twitter.com/hashtag/B%E3%83%81%E3%83%BC%E3%83%A0%E3%81%AF%E3%81%84%E3%81%84%E3%81%9E?src=hash">#Bチームはいいぞ</a></p>
+        <p>Twitter：<a target="_blank" href="https://twitter.com/hiramanteamb">@hiramanteamb</a><br>
+        <small>ハッシュタグ：<a target="_blank" href="https://twitter.com/hashtag/B%E3%83%81%E3%83%BC%E3%83%A0%E3%81%AF%E3%81%84%E3%81%84%E3%81%9E?src=hash">#Bチームはいいぞ</a></small></p>
 
         <a class="twitter-timeline" data-dnt="true" data-width="450" data-height="450" data-link-color="#E81C4F" href="https://twitter.com/hiramanteamb?ref_src=twsrc%5Etfw">Tweets by hiramanteamb</a>
       </section>

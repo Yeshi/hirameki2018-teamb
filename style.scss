@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: center;
         &-info {
+            display: none;
             margin: 0 auto;
             box-sizing: border-box;
             padding: 60px;
@@ -33,12 +34,17 @@
 
 }
 #contents {
+    display: block;
     max-width: 780px;
     margin: 0 auto;
 }
 .module-about {
     .about-image {
         flex-shrink: 0;
+        img {
+            width: 200px;
+            box-shadow: 0 0 8px rgba(0,0,0,.15);
+        }
     }
     .about-catch {
         padding-bottom: 50px;
@@ -81,10 +87,24 @@
 
 .member-list {
     padding-bottom: 50px;
+    .member-hd {
+        padding-bottom: 30px;
+        text-align: center;
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url(images/star.svg) no-repeat 50%;
+            background-size: cover;
+            width: 48px;
+            height: 48px;
+            margin-right: -22px;
+            vertical-align: bottom;
+        }
+    }
 }
 .member-info {
-    padding-bottom: 50px;
-    h2 {
+    padding-bottom: 60px;
+    .info-title {
         display: inline-block;
         margin-bottom: 20px;
         padding: 0 20px;
@@ -96,7 +116,7 @@
         font-style: normal;
     }
 @for $i from 1 through 9 {
-    &:nth-child(#{$i}) h2 {
+    &:nth-child(#{$i}) .info-title {
         background: linear-gradient(transparent 50%,nth($rainbows,$i) 50%);
     }
 }
@@ -126,6 +146,7 @@
                     font-size: 20px;
                     margin-right: 10px;
                     cursor: pointer;
+                    user-select: none;
                     &.cur {
                         color: #000;
                         box-shadow:0 0 3px rgba(0, 0, 0, .6); 
@@ -156,7 +177,17 @@
 
 
 .module-sns {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
+    h2:before {
+        content: "";
+        display: inline-block;
+        background: url(images/star.svg) no-repeat 50%;
+        background-size: cover;
+        width: 48px;
+        height: 48px;
+        margin-right: -22px;
+        vertical-align: bottom;
+    }
     p {
         margin: 1em 0;
     }
@@ -166,6 +197,16 @@
 }
 .module-links {
     padding-bottom: 30px;
+    h2:before {
+        content: "";
+        display: inline-block;
+        background: url(images/star.svg) no-repeat 50%;
+        background-size: cover;
+        width: 48px;
+        height: 48px;
+        margin-right: -22px;
+        vertical-align: bottom;
+    }
     p {
         padding: 15px 0;
         line-height: 1.5;
@@ -228,22 +269,32 @@
     #contents {
         margin: 0 15px;
     }
-    .member-list h2 {
-        padding: 0 5px;
-        font-size: 22px;
-    }
-    .member-info .info-wrap {
-        display: block;
-        .info-image {
-            text-align: center;
-            padding-right: 0;
-            ul {
-                padding-top: 10px;
-            }
+    .about-info {
+        flex-direction: column;
+        .about-text {
+            padding: 20px 0;
+            max-width: 400px;
         }
-        .info-text {
-            padding-top: 30px;
-            justify-content: center;
+
+    }
+    .member-info {
+        h2 {
+            padding: 0 5px;
+            font-size: 22px;
+        }
+        .info-wrap {
+            display: block;
+            .info-image {
+                text-align: center;
+                padding-right: 0;
+                ul {
+                    padding-top: 10px;
+                }
+            }
+            .info-text {
+                padding-top: 30px;
+                justify-content: center;
+            }
         }
     }
     .module-links {
