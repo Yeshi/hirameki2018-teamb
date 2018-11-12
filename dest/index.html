@@ -2,6 +2,8 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="コミティア,COMITIA126,ひらめきマンガ,ひらめき漫画,はたらく美少女">
+    <meta name="description" content="ゲンロン ひらめき☆マンガ教室の受講生が3サークルに分かれ、COMITIA126で同人誌を頒布します。チームBのテーマは「はたらく美少女」。ぜひお立ち寄りください。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>COMITIA126新刊 う01b はたらく美少女アンソロジー ひらめきマンガ教室 チームB</title>
@@ -37,7 +39,6 @@ var memberData = [
         "twitter": "sushicream_",
         "hirameki_id": "sushicream",
         "page_sum": 4,
-        "page_cur": 1,
     },
     {
         "name": "静脈",
@@ -46,7 +47,6 @@ var memberData = [
         "twitter": "joumyakun",
         "hirameki_id": "joumyakun",
         "page_sum": 4,
-        "page_cur": 1,
     },
     {
         "name": "森井餡",
@@ -55,7 +55,6 @@ var memberData = [
         "twitter": "an_morii",
         "hirameki_id": "806303genron",
         "page_sum": 4,
-        "page_cur": 1,
     },
     {
         "name": "魚田古塲",
@@ -64,7 +63,6 @@ var memberData = [
         "twitter": "",
         "hirameki_id": "uodakoba",
         "page_sum": 1,
-        "page_cur": 1,
     },
     {
         "name": "首藤",
@@ -73,7 +71,6 @@ var memberData = [
         "twitter": "kubifuji0619",
         "hirameki_id": "kubifuji0619",
         "page_sum": 4,
-        "page_cur": 1,
     },
     {
         "name": "増井 理佐子",
@@ -82,7 +79,6 @@ var memberData = [
         "twitter": "decop0n",
         "hirameki_id": "lisacomasui27",
         "page_sum": 1,
-        "page_cur": 1,
     },
     {
         "name": "やまだ亜麻",
@@ -91,7 +87,6 @@ var memberData = [
         "twitter": "ama_yamada",
         "hirameki_id": "amayamada",
         "page_sum": 4,
-        "page_cur": 1,
     },
     {
         "name": "福西 奈苗",
@@ -100,7 +95,6 @@ var memberData = [
         "twitter": "Ofuku0611",
         "hirameki_id": "ofuku",
         "page_sum": 4,
-        "page_cur": 1
     },
     {
         "name": "市庭実和",
@@ -109,7 +103,6 @@ var memberData = [
         "twitter": "IchiniwaM",
         "hirameki_id": "tilapia",
         "page_sum": 4,
-        "page_cur": 1
     }
 ];
 </script>
@@ -147,7 +140,7 @@ var memberData = [
               <dd>2018年11月25日（日）11:00～16:00</dd>
               <dd class="small">※ 一般参加の場合「ティアズマガジン」の購入が必要です。</dd>
             </dl>
-            </dl>
+            <dl>
               <dt>同時開催</dt>
               <dd><a href="https://school.genron.co.jp/manga/#post-4233">ゲンロン ひらめき☆マンガ教室特別公開授業</a></dd>
             </dl>
@@ -157,13 +150,14 @@ var memberData = [
 
       <article id="member-list" class="member-list">
         <h2 class="member-hd">試し読み</h2>
-        <section v-for="mem in members" class="member-info">
+        <section v-cloak v-for="mem in members" class="member-info">
           <div class="info-header" :id="'info-'+mem.hirameki_id">
             <h2 class="info-title">{{ mem.title }}</h2>
           </div>
           <div class="info-wrap">
             <div class="info-image">
-              <img :src="'./images/sample/'+mem.hirameki_id+'/page0'+mem.page_cur+'.jpg'" alt="">
+              <img v-show="mem.isLoad" v-on:load="loaded(mem)" :src="'https://hirameki-teamb.firebaseapp.com/images/sample/'+mem.hirameki_id+'/page0'+mem.page_cur+'.jpg'" alt="">
+              <img v-show="!mem.isLoad" src="./images/loading.png" class="loading" alt="loading">
               <ul>
                 <li v-for="n in mem.page_sum" v-on:click="selectPage(mem,n)" v-bind:class="{cur:mem.page_cur === n}">{{ n }}</li>
               </ul>
@@ -220,9 +214,19 @@ var memberData = [
     data: {
       members: memberData
     },
+    created() {
+      for(var i=0;i<this.members.length; i++){
+        this.$set(this.members[i], 'isLoad', false);
+        this.$set(this.members[i], 'page_cur', 1);
+      }
+    },
     methods: {
       selectPage: function (mem,num){
+        mem.isLoad = false;
         mem.page_cur = num;
+      },
+      loaded(mem){
+        mem.isLoad = true;
       }
     }
   })
