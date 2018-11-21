@@ -6,7 +6,7 @@
     <meta name="description" content="ゲンロン ひらめき☆マンガ教室の受講生が3サークルに分かれ、COMITIA126で同人誌を頒布します。チームBのテーマは「はたらく美少女」。ぜひお立ち寄りください。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>COMITIA126新刊 う01b はたらく美少女アンソロジー ひらめきマンガ教室 チームB</title>
+    <title>はたらく美少女アンソロジー COMITIA126 う01b ひらめき☆マンガ教室 チームB</title>
     <link rel="stylesheet" href="style.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -144,9 +144,29 @@ var memberData = [
               <dt>同時開催</dt>
               <dd><a href="https://school.genron.co.jp/manga/#post-4233">ゲンロン ひらめき☆マンガ教室特別公開授業</a></dd>
             </dl>
+            <a class="share-button" href="https://twitter.com/intent/tweet?hashtags=B%E3%83%81%E3%83%BC%E3%83%A0%E3%81%AF%E3%81%84%E3%81%84%E3%81%9E&&ref_src=twsrc%5Etfw&related=hiramanteamb&text=%E3%81%AF%E3%81%9F%E3%82%89%E3%81%8F%E7%BE%8E%E5%B0%91%E5%A5%B3%E3%82%A2%E3%83%B3%E3%82%BD%E3%83%AD%E3%82%B8%E3%83%BC%20COMITIA126%20%E3%81%8601b&tw_p=tweetbutton&url=https%3A%2F%2Fhirameki-teamb.firebaseapp.com%2F">Twitterでシェアする</a>
           </div>
       </div>
       </section>
+
+      <section class="module module-introManga">
+        <h2>紹介マンガ</h2>
+        <div class="intro-wrap" id="intro-wrap">
+          <div class="intro-image">
+            <img v-show="isLoad" v-on:load="loaded()" v-on:click="nextPage()" :src="'./images/sample/senden/page0'+series_cur+'_0'+page_cur+'.jpg'" alt="">
+            <img v-show="!isLoad" src="./images/loading.png" class="loading" alt="loading">
+            <ul>
+              <li v-for="n in page_list[series_cur-1]" v-on:click="selectPage(n)" v-bind:class="{cur:page_cur === n}">{{ n }}</li>
+            </ul>
+          </div>
+          <ul class="intro-series">
+            <li v-for="m in page_list.length" v-on:click="selectSeries(m)" v-bind:class="{cur:series_cur === m}"># {{ m }}</li>
+          </ul>
+        </div>
+        <p class="intro-credit">作：静脈</p>
+      </section>
+
+      
 
       <article id="member-list" class="member-list">
         <h2 class="member-hd">試し読み</h2>
@@ -156,7 +176,7 @@ var memberData = [
           </div>
           <div class="info-wrap">
             <div class="info-image">
-              <img v-show="mem.isLoad" v-on:load="loaded(mem)" :src="'https://hirameki-teamb.firebaseapp.com/images/sample/'+mem.hirameki_id+'/page0'+mem.page_cur+'.jpg'" alt="">
+              <img v-show="mem.isLoad" v-on:load="loaded(mem)" v-on:click="nextPage(mem)" :src="'https://hirameki-teamb.firebaseapp.com/images/sample/'+mem.hirameki_id+'/page0'+mem.page_cur+'.jpg'" alt="">
               <img v-show="!mem.isLoad" src="./images/loading.png" class="loading" alt="loading">
               <ul>
                 <li v-for="n in mem.page_sum" v-on:click="selectPage(mem,n)" v-bind:class="{cur:mem.page_cur === n}">{{ n }}</li>
@@ -173,9 +193,11 @@ var memberData = [
             </div>
           </div>
         </section>
+
+        <a class="share-button" href="https://twitter.com/intent/tweet?hashtags=B%E3%83%81%E3%83%BC%E3%83%A0%E3%81%AF%E3%81%84%E3%81%84%E3%81%9E&&ref_src=twsrc%5Etfw&related=hiramanteamb&text=%E3%81%AF%E3%81%9F%E3%82%89%E3%81%8F%E7%BE%8E%E5%B0%91%E5%A5%B3%E3%82%A2%E3%83%B3%E3%82%BD%E3%83%AD%E3%82%B8%E3%83%BC%20COMITIA126%20%E3%81%8601b&tw_p=tweetbutton&url=https%3A%2F%2Fhirameki-teamb.firebaseapp.com%2F">Twitterでシェアする</a>
       </article>
 
-      <section class="module-sns">
+      <section class="module module-sns">
         <h2>SNSで最新情報配信中</h2>
         <p>Pixiv： <a href="https://www.pixiv.net/member.php?id=34223413">はたらく美少女アンソロジー</a></p>
         <p>Twitter：<a target="_blank" href="https://twitter.com/hiramanteamb">@hiramanteamb</a><br>
@@ -183,7 +205,10 @@ var memberData = [
 
         <a class="twitter-timeline" data-dnt="true" data-width="450" data-height="450" data-link-color="#E81C4F" href="https://twitter.com/hiramanteamb?ref_src=twsrc%5Etfw">Tweets by hiramanteamb</a>
       </section>
-      <section class="module-links">
+
+
+
+      <section class="module module-links">
         <h2>他チームの同人誌もチェック</h2>
         <p><a href="https://school.genron.co.jp/manga/" target="_blank">ゲンロン ひらめき☆マンガ教室</a>の受講生が3サークルに分かれ、それぞれが同人誌を制作しています。</p>
         <ul>
@@ -221,15 +246,53 @@ var memberData = [
       }
     },
     methods: {
-      selectPage: function (mem,num){
+      selectPage(mem,num){
         mem.isLoad = false;
         mem.page_cur = num;
       },
-      loaded(mem){
+      nextPage(mem) {
+        if(mem.page_sum != mem.page_cur){
+          mem.page_cur++;
+        }
+      },
+      loaded(mem) {
         mem.isLoad = true;
       }
     }
-  })
+  });
+  var app2 = new Vue({
+    el:"#intro-wrap",
+    data: {
+      isLoad: false,
+      series_cur: 1,
+      page_cur: 1,
+      page_list: [4,4,4,4,4,4]
+    },
+    methods: {
+      loaded(){
+        this.isLoad = true;
+      },
+      selectPage(num){
+        this.isLoad = false;
+        this.page_cur = num;
+      },
+      nextPage(){
+        if(this.page_list[this.series_cur-1] != this.page_cur){
+          this.isLoad = false;
+          this.page_cur++;
+        }else if(this.page_list.length != this.series_cur){
+          this.isLoad =false;
+          this.page_cur = 1;
+          this.series_cur++;
+        }
+      },
+      selectSeries(num){
+        this.isLoad = false;
+        this.page_cur = 1;
+        this.series_cur = num;
+      }
+    }
+  });
 </script>
 
 <!-- Adobe fonts -->

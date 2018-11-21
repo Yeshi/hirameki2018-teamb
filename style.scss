@@ -38,6 +38,25 @@
     max-width: 780px;
     margin: 0 auto;
 }
+.module {
+    padding-bottom: 40px;
+    h2 {
+        font-family: dnp-shuei-anti-std, sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url(images/star.svg) no-repeat 50%;
+            background-size: cover;
+            width: 48px;
+            height: 48px;
+            margin-right: -22px;
+            vertical-align: bottom;
+        }
+    }
+}
+
 .module-about {
     .about-image {
         flex-shrink: 0;
@@ -77,6 +96,75 @@
     }
 }
 
+.module-introManga {
+    h2 {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .intro-wrap {
+        display: flex;
+        li {
+            height: 40px;
+            background: #fff;
+            border-radius: 3px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+            text-align: center;
+            line-height: 40px;
+            color: #aaa;
+            cursor: pointer;
+            user-select: none;
+            &.cur {
+                color: #000;
+                box-shadow:0 0 3px rgba(0, 0, 0, .6); 
+                cursor: default;
+            }
+        }
+    }
+    .intro-image {
+        flex-shrink: 0;
+        padding-right: 20px;
+        img {
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 8px rgba(0,0,0,.05);
+            cursor: pointer;
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            padding-top: 15px;
+            li {
+                width: 40px;
+                margin-right: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+    .intro-series li {
+        margin-bottom: 20px;
+        padding: 0 2em;
+    }
+    .intro-credit {
+        font-size: 13px;
+        color: rgba(0,0,0,.6);
+        text-align: right;
+    }
+}
+
+.share-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 18px 8px 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+    background: #1da1f2 url(./images/twitter-logo.svg) no-repeat 0 50%;
+    color: #fff;
+    font-size: 13px;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 .member-icon {
     width: 75px;
     height: 75px;
@@ -90,6 +178,9 @@
     .member-hd {
         padding-bottom: 30px;
         text-align: center;
+        font-family: dnp-shuei-anti-std, sans-serif;
+        font-weight: 600;
+        font-style: normal;
         &:before {
             content: "";
             display: inline-block;
@@ -129,6 +220,7 @@
                 width: 100%;
                 max-width: 400px;
                 box-shadow: 0 0 8px rgba(0,0,0,.05);
+                cursor: pointer;
             }
             ul {
                 display: flex;
@@ -174,20 +266,8 @@
         }
     }
 }
-
-
 .module-sns {
     padding-bottom: 50px;
-    h2:before {
-        content: "";
-        display: inline-block;
-        background: url(images/star.svg) no-repeat 50%;
-        background-size: cover;
-        width: 48px;
-        height: 48px;
-        margin-right: -22px;
-        vertical-align: bottom;
-    }
     p {
         margin: 1em 0;
     }
@@ -196,17 +276,6 @@
     }
 }
 .module-links {
-    padding-bottom: 30px;
-    h2:before {
-        content: "";
-        display: inline-block;
-        background: url(images/star.svg) no-repeat 50%;
-        background-size: cover;
-        width: 48px;
-        height: 48px;
-        margin-right: -22px;
-        vertical-align: bottom;
-    }
     p {
         padding: 15px 0;
         line-height: 1.5;
@@ -271,14 +340,38 @@
     }
     .about-info {
         flex-direction: column;
+        padding: 0;
         .about-text {
             padding: 20px 0;
             max-width: 400px;
         }
-
+    }
+    .module-introManga {
+        .intro-wrap {
+            display: block;
+        }
+        .intro-image {
+            text-align: center;
+            padding-right: 0;
+            ul {
+                padding-top: 10px;
+            }
+        }
+        .intro-series {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            li {
+                height: 32px;
+                line-height: 32px;
+                margin: 10px 5px;
+                padding: 0 10px;
+                font-size: 12px;
+            }
+        }
     }
     .member-info {
-        h2 {
+        .info-title {
             padding: 0 5px;
             font-size: 22px;
         }
@@ -293,6 +386,14 @@
             }
             .info-text {
                 justify-content: center;
+            }
+            .member-text {
+                h3 {
+                    font-size: 18px;
+                }
+                p {
+                    font-size: 14px;
+                }
             }
         }
     }
