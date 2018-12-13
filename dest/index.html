@@ -47,6 +47,7 @@ var memberData = [
         "twitter": "joumyakun",
         "hirameki_id": "joumyakun",
         "page_sum": 4,
+        "interview":"https://note.mu/sushicream/n/n308a7389393a"
     },
     {
         "name": "森井餡",
@@ -55,6 +56,7 @@ var memberData = [
         "twitter": "an_morii",
         "hirameki_id": "806303genron",
         "page_sum": 4,
+        "interview": "https://note.mu/sushicream/n/n7068972977cd?magazine_key=m5d64866285f1"
     },
     {
         "name": "魚田古塲",
@@ -63,6 +65,7 @@ var memberData = [
         "twitter": "",
         "hirameki_id": "uodakoba",
         "page_sum": 1,
+        "interview": "https://note.mu/sushicream/n/n011555e500b7?magazine_key=m5d64866285f1"
     },
     {
         "name": "首藤",
@@ -71,6 +74,7 @@ var memberData = [
         "twitter": "kubifuji0619",
         "hirameki_id": "kubifuji0619",
         "page_sum": 4,
+        "interview": "https://note.mu/sushicream/n/nf67ae615dc78?magazine_key=m5d64866285f1"
     },
     {
         "name": "増井 理佐子",
@@ -79,6 +83,7 @@ var memberData = [
         "twitter": "decop0n",
         "hirameki_id": "lisacomasui27",
         "page_sum": 1,
+        "interview": "https://note.mu/sushicream/n/n90b348d46a0b?magazine_key=m5d64866285f1"
     },
     {
         "name": "やまだ亜麻",
@@ -87,6 +92,7 @@ var memberData = [
         "twitter": "ama_yamada",
         "hirameki_id": "amayamada",
         "page_sum": 4,
+        "interview": "https://note.mu/sushicream/n/nd8a47426c515"
     },
     {
         "name": "福西 奈苗",
@@ -95,6 +101,7 @@ var memberData = [
         "twitter": "Ofuku0611",
         "hirameki_id": "ofuku",
         "page_sum": 4,
+        "interview": "https://note.mu/sushicream/n/n9bb1ab928434?magazine_key=m5d64866285f1"
     },
     {
         "name": "市庭実和",
@@ -103,6 +110,7 @@ var memberData = [
         "twitter": "IchiniwaM",
         "hirameki_id": "tilapia",
         "page_sum": 4,
+        "interview": "https://note.mu/sushicream/n/nb40ad98c8c94?magazine_key=m5d64866285f1"
     }
 ];
 </script>
@@ -187,8 +195,9 @@ var memberData = [
               <div class="member-text">
                 <h3>{{ mem.name }}</h3>
                 <p>{{ mem.comment }}</p>
-                <p v-if="mem.twitter">Twitter <a :href="'https://twitter.com/'+ mem.twitter">@{{ mem.twitter }}</a></p>
+                <p v-if="mem.twitter">Twitter <a target="_blank" :href="'https://twitter.com/'+ mem.twitter">@{{ mem.twitter }}</a></p>
                 <p><a target="_blank" :href="'https://school.genron.co.jp/works/manga/2018/students/'+ mem.hirameki_id">ひらめき☆マンガ教室作品一覧</a></p>
+                <p v-if="mem.interview"><a target="_blank" :href="mem.interview">作家インタビュー</a></p>
               </div>
             </div>
           </div>
@@ -266,7 +275,7 @@ var memberData = [
       isLoad: false,
       series_cur: 1,
       page_cur: 1,
-      page_list: [4,4,4,4,4,4]
+      page_list: [4,4,4,4,4,4,4,4,4]
     },
     methods: {
       loaded(){
