@@ -94,6 +94,10 @@
             }
         }
     }
+    p.thanks {
+        font-weight: bold;
+        color: #c21d55;
+    }
 }
 
 .module-introManga {
@@ -404,6 +408,21 @@
                 width: 100%;
                 padding-bottom: 30px;
             }
+        }
+    }
+}
+
+.module.onlineStore {
+    width: 300px;
+    margin: 0 auto;
+    p {
+        padding: 1em 0;
+    }
+    li {
+        padding-bottom: .5em;
+        font-weight: bold;
+        &:before {
+            content: "・ "
         }
     }
 }

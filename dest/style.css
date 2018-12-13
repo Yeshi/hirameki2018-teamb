@@ -154,6 +154,11 @@ a:hover {
   font-size: 12px;
 }
 
+.about-info p.thanks {
+  font-weight: bold;
+  color: #c21d55;
+}
+
 .module-introManga h2 {
   text-align: center;
   padding-bottom: 20px;
@@ -576,4 +581,22 @@ a:hover {
     width: 100%;
     padding-bottom: 30px;
   }
+}
+
+.module.onlineStore {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.module.onlineStore p {
+  padding: 1em 0;
+}
+
+.module.onlineStore li {
+  padding-bottom: .5em;
+  font-weight: bold;
+}
+
+.module.onlineStore li:before {
+  content: "・ ";
 }
